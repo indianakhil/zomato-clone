@@ -1,0 +1,22 @@
+
+<%= render "nav" %>
+<div class = 'zomato_poster' >
+
+  <h1 style = "margin-top: 5rem; text-align:center; font-style: italic; font-size: 80px; color:rgb(255, 255, 255);">zomato </h1>
+  <p style = "font-family: arial; text-align:center; font-size: 30px; color:rgb(255, 255, 255);">Discover the best food & drinks in your city</p>
+
+  <div style = 'color: white'>
+    <%= form_tag(restaurants_path)  do %>
+      <div class = "search_box" >Store <br><%= text_field_tag :res_name %>
+      <%= submit_tag 'Search' %> <br>
+
+
+    </div>
+    <% end %>
+  </div>
+
+</div>
+<div class = 'order_button'>
+  <%= link_to "Order Online", restaurants_path%>
+</div>
+<br>

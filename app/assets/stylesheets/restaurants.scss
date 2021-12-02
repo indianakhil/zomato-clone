@@ -1,0 +1,42 @@
+// Place all the styles related to the Restaurants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.zomato_poster {
+
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    margin-top: 20px;
+    object-fit: cover;
+    transform: scale(1.1);
+    opacity: 1;
+    background-image: url("/assets/zomato-cover_photo.jpg");
+    background-size: cover;
+    // position: absolute;
+    // height: 70%;
+    // width: 100rem;
+    // object-fit: cover;
+    // transform: scale(1.1);
+    // opacity: 1;
+    // background-image: url("/assets/zomato-cover_photo.jpg");
+    // background-size: 100% 100%;
+  }
+  
+  .search_box{
+    width: 100%;
+    text-align:center;
+    font: 20px Tahoma, Helvetica, Arial, Sans-Serif;
+    margin-top: 5rem;
+    color: white;
+  
+  }
+  
+  .order_button{
+    padding-top: 30rem;
+    color: black;
+    text-align:center; 
+    font-style: italic;
+     font-size: 70px;
+  }
+  

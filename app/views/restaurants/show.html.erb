@@ -1,0 +1,40 @@
+
+<% if user_signed_in? %>
+    <%# <%= render "nav" %>
+
+    <%# if user is manager %>
+    <% if current_user.user_role.downcase == "manager" %>
+
+        <h1><%= @restaurant.name %></h1>
+
+        <h2>Cuisine: </h2><%= @restaurant.cuisine %>
+        <h2> Opening Time: </h2><%= @restaurant.open_time.strftime("%H:%M") %>
+        <h2>Closing Time: </h2><%= @restaurant.close_time.strftime("%H:%M") %>
+        <h2>Location: </h2><%= @restaurant.location %>
+        <br>
+        <br>
+        <%= link_to "Products", restaurant_products_path(@restaurant) %>
+        <hr>
+        <%= link_to "Edit", edit_restaurant_path(@restaurant) %> | 
+        <%= link_to "Destroy", restaurant_path(@restaurant),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+        <%= link_to "Back to Restaurants", restaurants_path %> | 
+        <%= link_to "Home", root_path%>
+        <hr>
+    
+        <% elsif current_user.user_role.downcase == "customer"  %>
+            <h1><%= @restaurant.name %></h1>
+            <h2>Cuisine: </h2><%= @restaurant.cuisine %>
+            <h2> Opening Time: </h2><%= @restaurant.open_time.strftime("%H:%M") %>
+            <h2>Closing Time: </h2><%= @restaurant.close_time.strftime("%H:%M") %>
+            <h2>Location: </h2><%= @restaurant.location %>
+            <br>
+            <br>
+            <%= link_to "Order Online", restaurant_products_path(@restaurant) %>
+            <hr>
+            <%= link_to "Back to Restaurants", restaurants_path %> | 
+            <%= link_to "Home", root_path%>
+            <hr>
+    <% end %> 
+<% end %>   

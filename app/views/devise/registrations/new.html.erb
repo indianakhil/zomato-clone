@@ -1,0 +1,46 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name,placeholder: "Enter your Name", autofocus: true, autocomplete: "name"%>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, placeholder: "Enter your Email",autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, placeholder: "Enter your password",autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, placeholder: "Re-enter your Password ",autocomplete: "new-password" %>
+  </div>
+
+
+  <div class="field ">
+    <%= f.select :user_role,User.user_roles.keys,placeholder: "Role", autofocus: true, autocomplete: "Role",class:"text-decoration-none ", style:"width:2rem"%>
+  </div>
+
+<!--
+  <div class="field">
+    <%= f.hidden_field :user_role, :value => 'customer' %>
+  </div>
+  -->
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,119 @@
+<% if user_signed_in? %>
+
+<%= render "nav" %>
+
+  <%# if user is manager %>
+  <% if current_user.user_role.downcase == "manager" %>
+    <h1 style="text-align:center"></h1>
+    <% if @restaurants.size == 0 %>
+      <h3 style="color:red">No restaurants added yet. Add One !</h3>
+      Add new restaurant by clicking <%= link_to "here", new_restaurant_path, style:"text-decoration:none" %>
+      <% else %>
+    
+        <script src="https://kit.fontawesome.com/cac2174d5a.js" crossorigin="anonymous"></script>
+        <div style = 'font-size:48px;color:maroon'>
+          <h2 style = "text-align:center; font-size: 50px"> Your Restaurants <i class="fas fa-motorcycle"></i></h2>
+        </div>
+
+        <ul style = 'font-size: 20px;'>
+          <% @restaurants.each do |restaurant| %>
+
+            <!--
+              <%= link_to restaurant.name, restaurant %>
+            -->
+            <% if restaurant.user_id == current_user.id %>
+              <div style = 'align: center; background-color: #ffc0cb; /* Green */
+                border: none;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 12px;'>
+
+                <%= link_to restaurant.name, restaurant, :method => "get" %>
+              </div>
+              <br>
+              </a>
+              <br>
+            <%end%>
+
+
+          <% end %>
+        </ul>
+        <p style = "text-align:center; font-size: 50px">Add new Restaurant by clicking <%= link_to "here", new_restaurant_path, style:"text-decoration:none"%> <br></p>
+        <%= button_to "Home", root_path, :method => "get" %>
+        <br>
+      <% end %>
+
+
+    <%# if user is customer %>
+    <% elsif current_user.user_role.downcase == "customer" %> 
+
+      <% if @restaurants.size == 0 %>
+        <h3 style="color:red">No restaurants added yet. </h3>
+
+        <% else %>
+
+          <script src="https://kit.fontawesome.com/cac2174d5a.js" crossorigin="anonymous"></script>
+          <div style = 'font-size:48px;color:maroon'>
+            <h2 style = "text-align:center; font-size: 50px"> Fast Delivery <i class="fas fa-motorcycle"></i></h2>
+          </div>    
+
+
+            <% @restaurants.each do |restaurant| %>
+              <!--
+                <%= link_to restaurant.name, restaurant %>
+              -->
+              <div style = 'align: center; background-color: #ffc0cb; /* Green */
+                border: none;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 12px;'>
+
+                <%= link_to restaurant.name, restaurant, :method => "get" %>
+                <br>
+                </a>
+                <br>
+              </div>
+            <% end %>
+          <%= button_to "Home", root_path, :method => "get" %>
+          <br>
+        <% end %>
+    <% end %>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
