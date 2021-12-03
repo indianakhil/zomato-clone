@@ -29,7 +29,16 @@
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
-        <li style = "float:right; margin-left: 40rem">
+      <form class="d-flex">
+        <input class="form-control me-2" style = "float:right; margin-left: 10rem; padding-right: 15rem" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+
+
+
+
+        <li style = "float:right; margin-left: 2rem">
         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
            <%= link_to current_user.name, "destroy_user_session_path", class:"text-decoration-none ", style:"color:white; "%>
           </button>
