@@ -28,17 +28,14 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @product = @restaurant.products.create(product_params)
 
-    respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+          redirect_to restaurant_path(@restaurant)
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /products/1 or /products/1.json
@@ -52,17 +49,18 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @product = @restaurant.products.find(params[:id])
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @products = @restaurant.products
+    redirect_to restaurant_product_path
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      @product = @restaurant.products.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

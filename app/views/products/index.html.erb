@@ -31,14 +31,15 @@
               <td><%= product.category %></td>
               <td><%= product.portion %></td>
               <td><%= product.restaurant_id %></td>
-              <%# <td><%= link_to 'Show', restaurant_product_path %></td> %>
-              <%# <td><%= link_to 'Edit', edit_restaurant_product_path %></td>
-              <%# <td><%= link_to 'Destroy', restaurant_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
+              <td><%= link_to 'Edit', edit_restaurant_product_path(product.restaurant_id, product) %>
+              <td><%= link_to 'Destroy', restaurant_product_path(@restaurant, product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <br>
+      <%= link_to 'Add Product', new_restaurant_product_path %>
     <% end %>
   <% elsif current_user.user_role.downcase == "customer" %>
     <%if @products.size == 0%>
