@@ -52,18 +52,16 @@ class ProductsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @product = @restaurant.products.find(params[:id])
     @product.destroy
-    @products = @restaurant.products
-    redirect_to restaurant_product_path
+    # @products = @restaurant.products
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_product
       @restaurant = Restaurant.find(params[:restaurant_id])
       @product = @restaurant.products.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :price, :veg_nveg, :category, :portion, :image, :restaurant_id)
     end
