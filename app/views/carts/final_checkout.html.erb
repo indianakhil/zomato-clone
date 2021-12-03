@@ -1,0 +1,19 @@
+<br>
+<h1>Order Receipt</h1>
+<br>
+<hr>
+<br>
+<h4> Name: <%= current_user.name %> </h4>
+<h4> Email ID: <%= current_user.email %> </h4>
+<br>
+<hr>
+<br>
+<h4> Order Items </h4>
+<br>
+<%= @line_items.each do |item|%>
+    <ul>
+        <li><%= item.product.name%> x <%= item.quantity%> = <%= item.total%> </li>
+    </ul>
+<% end %>
+<br>
+<h2 style = "color:green">Your current cart value has a subtotal of: ₹ <%= current_order.subtotal %></h2>

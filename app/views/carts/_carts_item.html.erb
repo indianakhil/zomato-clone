@@ -1,8 +1,8 @@
-
+<h2> Cart </h2>
 <%= @line_items.each do |item|%>
 
-    <h3><%= item.product.name%> </h3>
-    <h3><%= item.product.price%> </h3>
+    <h5><%= item.product.name%> </h5>
+    <h5><%= item.product.price%> </h5>
 
     <%= form_for item, remote: true do |f|%>
 
@@ -13,15 +13,12 @@
 
     <% end %>
 
-    <h2>subtotal: <%= item.total %></h2>
-
-
-
+    <h4>subtotal: <%= item.total %></h4>
 
 <% end %>
 
-<h1 style = "color:green">Your current cart value has a subtotal of: ₹ <%= current_order.subtotal %></h1>
+<h3 style = "color:green">Your current cart value has a subtotal of: ₹ <%= current_order.subtotal %></h3>
 
-<%= button_to "Checkout" %>
+<%= button_to "Checkout" , checkout_path %>
 
 <%= link_to "Home", root_path %>

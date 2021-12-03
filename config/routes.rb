@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     resources :products
   end
   resources :line_items
-  resource :carts, only:[:show] # notice resource instead of resources
+  resource :carts, only:[:show, :checkout] # notice resource instead of resources
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  post 'carts/checkout', to: 'carts#checkout', as:'checkout'
   root 'restaurants#home'
 
 

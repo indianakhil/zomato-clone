@@ -6,8 +6,8 @@ class LineItemsController < ApplicationController
         @order = current_order
         @line_item = @order.line_items.new(order_params)
         @order.save
-
         session[:order_id] = @order.id
+        
     end
 
     def update
