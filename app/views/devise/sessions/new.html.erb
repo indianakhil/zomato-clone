@@ -1,3 +1,6 @@
+
+<h1 stye = "text-align:center"> Welcome to Zomato. Your hunger ends here </h1>
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -23,6 +26,5 @@
   </div>
 <% end %>
 
-<h3> Are you a merchant ? If yes, then <%= link_to "click here" %></h3>
 
 <%= render "devise/shared/links" %>

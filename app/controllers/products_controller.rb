@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
     @product = @restaurant.products.find(params[:id])
+    # @product = Product.find(params[:id])
     @product.destroy
     # @products = @restaurant.products
     redirect_to restaurant_path(@restaurant)
