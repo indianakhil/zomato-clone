@@ -1,0 +1,71 @@
+
+
+
+$("#new_restaurant").validate({
+
+//adding rule
+  rules: {
+  // username is required with max of 20 and min of 6
+  "restaurant[name]":{
+    required: true,
+    maxlength: 20,
+    minlength: 6
+  },
+
+
+  // username is required with max of 20 and min of 6
+  "restaurant[cuisine]":{
+    required: true,
+    maxlength: 20,
+    minlength: 6
+  },
+
+    // username is required with max of 20 and min of 6
+  "restaurant[open_time]":{
+    required: true
+  },
+
+    // username is required with max of 20 and min of 6
+  "restaurant[close_time]":{
+    required: true
+  },
+
+    // username is required with max of 20 and min of 6
+  "restaurant[location]":{
+    required: true,
+    minlength: 2
+  }
+
+  },
+ 
+  messages: {
+    name:{
+      required: "Restaurant name is required.",
+      maxlength: "Restaurant name must be less than 20",
+      minlength: "Restaurant name must be more than 6"
+    },
+
+    cuisine:{
+      required: "Restaurant name is required.",
+      maxlength: "Restaurant name must be less than 20",
+      minlength: "Restaurant name must be more than 6"
+    },
+
+
+        open_time:{
+      required: "Restaurant name is required.",
+    },
+
+        close_time:{
+      required: "Restaurant name is required.",
+      maxlength: "Restaurant name must be less than 20",
+      minlength: "Restaurant name must be more than 6"
+    },
+
+
+        location:{
+      required: "Restaurant name is required.",
+      minlength: "Restaurant name must be more than 6"
+    }
+  }
+});

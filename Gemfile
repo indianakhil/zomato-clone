@@ -26,6 +26,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails', '~> 4.4'
+# for jquery validation
+gem "jquery-validation-rails"
+
 # Use Active Storage variant
 gem 'bootstrap', '~> 5.1.3'
 # gem 'image_processing', '~> 1.2'

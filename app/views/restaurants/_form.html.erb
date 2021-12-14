@@ -1,4 +1,8 @@
-<%= form_with model: restaurant do |form| %>
+
+
+
+
+<%= form_with model: restaurant, id: "new_restaurant" do |form| %>
   <div>
     <%= form.label :restaurant_name %><br>
     <%= form.text_field :name %>
@@ -55,3 +59,9 @@
 
   <%= link_to "Home", root_path%>
 <% end %>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script type="text/javascript">
+  <%= render "validate.js" %>
+</script>
