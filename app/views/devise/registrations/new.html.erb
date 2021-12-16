@@ -37,6 +37,10 @@
     <%= f.hidden_field :user_role, :value => 'customer' %>
   </div>
   -->
+  <div class = "field">
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_tags %> 
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

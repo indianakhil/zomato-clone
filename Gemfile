@@ -32,7 +32,17 @@ gem "jquery-validation-rails"
 # Use Active Storage variant
 gem 'bootstrap', '~> 5.1.3'
 # gem 'image_processing', '~> 1.2'
+
+
+
 gem 'dotenv-rails'
+
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+
+gem "recaptcha", require: "recaptcha/rails"
+
+
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

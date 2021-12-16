@@ -7,6 +7,21 @@
       <%= link_to "Add", new_restaurant_product_path %></h2>
     <%else%>
 
+
+
+    <%= form_tag(search_path(@restaurant), :method => "get") do %>
+    <div class= "input-group">
+      <%= search_field_tag :search, params[:search], placeholder: "Type", class: "form-control" %>
+      <div class = "input-group-btn">
+        <%= button_tag "Search for Products", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
+      </div>
+    </div>
+    <% end %>
+
+
+
+
+
       <p id="notice"><%= notice %></p>
 
       <h1>Products</h1>
@@ -35,7 +50,7 @@
               <td><%= product.restaurant_id %></td>
               <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
               <td><%= link_to 'Edit', edit_restaurant_product_path(product.restaurant_id, product) %>
-              <td><%= link_to 'Delete', restaurant_products_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Delete', restaurant_products_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_product' %></td>
             </tr>
           <% end %>
         </tbody>

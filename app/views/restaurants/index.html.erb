@@ -46,7 +46,12 @@
               <br>
             <%end%>
 
-
+            <%= link_to "Edit", edit_restaurant_path(restaurant) %> |<%= link_to "Destroy", restaurant_path(restaurant),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+             <br>
+             <hr>
+             <br>
           <% end %>
         </ul>
         <p style = "text-align:center; font-size: 50px">Add new Restaurant by clicking <%= link_to "here", new_restaurant_path, style:"text-decoration:none"%> <br></p>

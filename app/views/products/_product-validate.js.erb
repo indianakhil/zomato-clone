@@ -5,7 +5,7 @@ $("#new_product").validate({
 
 //adding rule
   rules: {
-  // name is required with max of 20 and min of 6
+  // name is required with max of 20 and min of 2
   "product[name]":{
     required: true,
     maxlength: 20,
@@ -13,23 +13,23 @@ $("#new_product").validate({
   },
 
 
-  // price is required with max of 20 and min of 6
+  // price is required with min value of 0
   "product[price]":{
     required: true,
     min: 0
   },
 
-    // veg_nveg is required with max of 20 and min of 6
+    // veg_nveg is required
   "product[veg_nveg]":{
     required: true
   },
 
-    // category is required with max of 20 and min of 6
+    // category is required
   "product[category]":{
     required: true
   },
 
-    // portion is required with max of 20 and min of 6
+    // portion is required
   "product[portion]":{
     required: true
   }

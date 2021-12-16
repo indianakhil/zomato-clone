@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+  # devise_for :users, controllers: {registrations: "registrations"}
+  # devise_for :users, controllers: {sessions: "sessions"}
+  # devise_for :users, controllers: {passwords: "passwords"}
+
+  devise_for :controllers => { :registrations => "users/registrations", :sessions => "users/sessions", :passwords =>       "users/passwords" }
+
+  get 'restaurants/:restaurant_id/search', to: "products#search", as:"search"
+
+
   get 'carts/show'
-  # get 'restaurants/index'
+  # get 'restaurants/index
   # get 'restaurants/create'
   # get 'restaurants/new'
   # get 'restaurants/edit'

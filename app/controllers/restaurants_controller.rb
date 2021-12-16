@@ -41,6 +41,13 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
     #
     redirect_to root_path
+
+    # respond_to do |format|
+    #   format.html { redirect_to restaurants_path(restaurant) }
+    #   format.json { head :no_content }
+    #   format.js   { render :layout => false }
+    # end
+
   end
 
 

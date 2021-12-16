@@ -54,8 +54,32 @@ class ProductsController < ApplicationController
     # @product = Product.find(params[:id])
     @product.destroy
     # @products = @restaurant.products
-    redirect_to restaurant_path(@restaurant)
+    # redirect_to restaurant_path(@restaurant)
+
+    respond_to do |format|
+      format.html { redirect_to restaurant_products_path(restaurant) }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
+
+
+
+  def search
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @products = @restaurant.products
+
+    if params[:search].blank?
+      redirect_to restaurant_products_path and return
+    else
+      @parameter = params[:search].downcase
+      @results = @products.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end
+
+  end
+
+
+
 
   private
     def set_product
@@ -64,6 +88,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :veg_nveg, :category, :portion, :restaurant_id)
+      params.require(:product).permit(:name, :price, :veg_nveg, :category, :portion, :restaurant_id, :search)
     end
 end
