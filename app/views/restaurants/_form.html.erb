@@ -3,6 +3,13 @@
 
 
 <%= form_with model: restaurant, id: "new_restaurant" do |form| %>
+
+  <div>
+  <%= form.label :restaurant_image %><br>
+  <%= form.file_field :image %>
+  </div>
+
+
   <div>
     <%= form.label :restaurant_name %><br>
     <%= form.text_field :name %>

@@ -264,6 +264,7 @@ DEPENDENCIES
   jquery-rails (~> 4.4)
   jquery-validation-rails
   listen (~> 3.3)
+  mini_magick
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

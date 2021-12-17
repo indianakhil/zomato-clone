@@ -25,6 +25,12 @@
               <%= link_to restaurant.name, restaurant %>
             -->
             <% if restaurant.user_id == current_user.id %>
+
+
+            
+
+
+
               <div style = 'align: center; background-color: #ffc0cb; /* Green */
                 border: none;
                 color: white;
@@ -38,7 +44,7 @@
                 border-radius: 12px;'>
 
 
-
+<%= link_to(image_tag(restaurant.image.thumb.url, alt: 'Image'), restaurant ,target: '_blank') if restaurant.image? %><br><br>
                 <%= link_to restaurant.name, restaurant, :method => "get" %>
               </div>
               <br>
@@ -89,6 +95,8 @@
                 margin: 4px 2px;
                 cursor: pointer;
                 border-radius: 12px;'>
+
+                <%= link_to(image_tag(restaurant.image.thumb.url, alt: 'Image'), restaurant ,target: '_blank') if restaurant.image? %><br><br>
 
                 <%= link_to restaurant.name, restaurant, :method => "get" %>
                 <br>

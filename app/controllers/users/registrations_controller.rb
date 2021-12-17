@@ -5,19 +5,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 
 
-  def create
-    if !verify_recaptcha
-      flash.delete :recaptcha_error
-      build_resource(sign_up_params)
-      resource.valid?
-      resource.errors.add(:base, "There was an error with the recaptcha code below. Please re-enter the code.")
-      clean_up_passwords(resource)
-      respond_with_navigational(resource) { render_with_scope :new }
-    else
-      flash.delete :recaptcha_error
-      super
-  end
+  # def create
+  #   if !verify_recaptcha
+  #     flash.delete :recaptcha_error
+  #     build_resource(sign_up_params)
+  #     resource.valid?
+  #     resource.errors.add(:base, "There was an error with the recaptcha code below. Please re-enter the code.")
+  #     clean_up_passwords(resource)
+  #     respond_with_navigational(resource) { render_with_scope :new }
+  #   else
+  #     flash.delete :recaptcha_error
+  #     super
+  # end
 
+
+  def create
+    #build the resource
+    build_resource(sign_up_params)   
+    #Verifying Captcha
+    if verify_recaptcha(model: resource) 
+      super
+    else
+      render 'new'
+    end
+  end
+      #
+      # Other line of Codes
+    
 
 
   # before_action :configure_sign_up_params, only: [:create]
@@ -81,18 +95,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 private
 
-  def check_captcha
-    return if verify_recaptcha
+def check_captcha
+  return if verify_recaptcha
 
-    self.resource = resource_class.new sign_up_params
-    resource.validate # Look for any other validation errors besides reCAPTCHA
-    set_minimum_password_length
+  self.resource = resource_class.new sign_up_params
+  resource.validate # Look for any other validation errors besides reCAPTCHA
+  set_minimum_password_length
 
-    respond_with_navigational(resource) do
-      flash.discard(:recaptcha_error) # We need to discard flash to avoid showing it on the next page reload
-      render :new
-    end
+  respond_with_navigational(resource) do
+    flash.discard(:recaptcha_error) # We need to discard flash to avoid showing it on the next page reload
+    render :new
   end
+end
 
 
 end

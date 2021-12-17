@@ -16,6 +16,7 @@
       <table>
         <thead>
           <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Price</th>
             <th>Veg nveg</th>
@@ -28,6 +29,8 @@
         <tbody>
           <% @products.each do |product| %>
             <tr>
+              
+              <td><%= link_to(image_tag(product.image.thumb.url, alt: 'Image'), restaurant_product ,target: '_blank') if product.image? %></td>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
               <td><%= product.veg_nveg %></td>
@@ -69,6 +72,7 @@
         <tbody>
           <% @products.each do |product| %>
             <tr>
+              <td><%= link_to(image_tag(product.image.thumb.url, alt: 'Image'), restaurant_product ,target: '_blank') if product.image? %></td>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
               <td><%= product.veg_nveg %></td>
