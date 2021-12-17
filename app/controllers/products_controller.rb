@@ -68,6 +68,7 @@ class ProductsController < ApplicationController
   def search
     @restaurant = Restaurant.find(params[:restaurant_id])
     @products = @restaurant.products
+    @line_item = current_order.line_items.new
 
     if params[:search].blank?
       redirect_to restaurant_products_path and return

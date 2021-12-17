@@ -9,22 +9,9 @@
 
 
 
-    <%= form_tag(search_path(@restaurant), :method => "get") do %>
-    <div class= "input-group">
-      <%= search_field_tag :search, params[:search], placeholder: "Type", class: "form-control" %>
-      <div class = "input-group-btn">
-        <%= button_tag "Search for Products", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
-      </div>
-    </div>
-    <% end %>
-
-
-
-
-
       <p id="notice"><%= notice %></p>
 
-      <h1>Products</h1>
+      <h1 style = "margin-top: 4rem;">Products</h1>
 
       <table>
         <thead>
@@ -34,7 +21,6 @@
             <th>Veg nveg</th>
             <th>Category</th>
             <th>Portion</th>
-            <th>Restaurant</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -47,7 +33,6 @@
               <td><%= product.veg_nveg %></td>
               <td><%= product.category %></td>
               <td><%= product.portion %></td>
-              <td><%= product.restaurant_id %></td>
               <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
               <td><%= link_to 'Edit', edit_restaurant_product_path(product.restaurant_id, product) %>
               <td><%= link_to 'Delete', restaurant_products_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_product' %></td>
@@ -66,7 +51,7 @@
 
       <p id="notice"><%= notice %></p>
 
-      <h1>Products</h1>
+      <h1 style = "margin-top: 4rem;">Products</h1>
 
       <table>
         <thead>
@@ -76,7 +61,7 @@
             <th>Veg nveg</th>
             <th>Category</th>
             <th>Portion</th>
-            <th>Restaurant</th>
+
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -89,7 +74,7 @@
               <td><%= product.veg_nveg %></td>
               <td><%= product.category %></td>
               <td><%= product.portion %></td>
-              <td><%= product.restaurant_id %></td>
+
               <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
               <td>
                 <%= form_for @line_item, remote: true do |f|%>
