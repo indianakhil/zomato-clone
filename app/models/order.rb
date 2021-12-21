@@ -8,8 +8,6 @@ class Order < ApplicationRecord
     end
 
 
-
-
     private
 
     def set_subtotal

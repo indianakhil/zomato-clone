@@ -19,11 +19,11 @@
 
 # PRODUCT
 # Product.destroy_all
-product1 = Product.create({:name=>"Chocolate cake", :price => 450, :veg_nveg => "veg", :category => "Cakes", :portion => "Half", :restaurant_id=> 1})
-product2 = Product.create({:name=>"Chocolate donuts", :price => 100, :veg_nveg => "veg", :category => "Donuts", :portion => "Full", :restaurant_id=> 1})
-product3 = Product.create({:name=>"Vanilla pastry", :price => 50, :veg_nveg => "veg", :category => "Pastries", :portion => "Full", :restaurant_id=> 1})
-product4 = Product.create({:name=>"Paneer sandwich", :price => 60, :veg_nveg => "veg", :category => "Sandwiches", :portion => "Half", :restaurant_id=> 3})
-product5 = Product.create({:name=>"Cheese burger", :price => 50, :veg_nveg => "veg", :category => "Burgers", :portion => "Half", :restaurant_id=> 3})
+# product1 = Product.create({:name=>"Chocolate cake", :price => 450, :veg_nveg => "veg", :category => "Cakes", :portion => "Half", :restaurant_id=> 1})
+# product2 = Product.create({:name=>"Chocolate donuts", :price => 100, :veg_nveg => "veg", :category => "Donuts", :portion => "Full", :restaurant_id=> 1})
+# product3 = Product.create({:name=>"Vanilla pastry", :price => 50, :veg_nveg => "veg", :category => "Pastries", :portion => "Full", :restaurant_id=> 1})
+# product4 = Product.create({:name=>"Paneer sandwich", :price => 60, :veg_nveg => "veg", :category => "Sandwiches", :portion => "Half", :restaurant_id=> 3})
+# product5 = Product.create({:name=>"Cheese burger", :price => 50, :veg_nveg => "veg", :category => "Burgers", :portion => "Half", :restaurant_id=> 3})
 
 # puts "Total number of products: #{Product.all.count}"
 # puts "Product names: #{Product.all.pluck("name")}"
@@ -36,3 +36,12 @@ product5 = Product.create({:name=>"Cheese burger", :price => 50, :veg_nveg => "v
 # CART
 # Cart.destroy_all
 # puts "\nTotal cart count: #{Cart.all.count}"
+
+Tag.create(name: "Veg")
+Tag.create(name: "Non Veg")
+Tag.create(name: "Snacks")
+Tag.create(name: "Beverages")
+Tag.create(name: "Pizza")
+Tag.create(name: "Fried Chicken")
+Tag.create(name: "Fast Food")
+Tag.create(name: "Healthy food")

@@ -6,8 +6,6 @@ class LineItem < ApplicationRecord
     before_save :set_unit_price
     before_save :set_total
 
-
-
     def unit_price
         if persisted?
             self[:unit_price]
@@ -19,7 +17,6 @@ class LineItem < ApplicationRecord
     def total
         unit_price.to_i * quantity
     end
-
 
 
     private

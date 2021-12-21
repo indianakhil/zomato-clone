@@ -7,6 +7,19 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methS
 
+//= require jquery
+//= require jquery_ujs
+//= require popper
+//= require tether
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
+
+
+
+
+
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"

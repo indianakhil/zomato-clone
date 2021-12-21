@@ -36,7 +36,11 @@ gem "jquery-validation-rails"
 gem 'bootstrap', '~> 5.1.3'
 # gem 'image_processing', '~> 1.2'
 
+# gem 'popper_js', '~> 1.11.1'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 gem 'dotenv-rails'
 

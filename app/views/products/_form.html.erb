@@ -1,6 +1,4 @@
 
-
-
 <%= form_with(model: [@restaurant, @product], id: "new_product", local: true) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
@@ -48,6 +46,28 @@
   <div class="field">
     <%= form.hidden_field :restaurant_id , value: @restaurant.id %>
   </div>
+
+
+<p>
+<!--   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a> -->
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Add Tags
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <p>Add Tags with comma seperated values</p>
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :tags %>
+  </div>
+  </div>
+</div>
+
+
+
 
   <div class="actions">
     <%= form.submit %>

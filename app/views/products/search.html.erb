@@ -11,6 +11,83 @@
 
 
 
+<!-- Sidebar for filters -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 100px;
+  left: 1050px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <h3>  Filters </h3>
+  Enter Tags <br>
+      <%= form_tag(search_path(@restaurant), :method => "get") do %>
+    <div class= "input-group" style = "float:right; margin-left: 5rem; padding-right: 2rem">
+      <%= search_field_tag :search, params[:search], placeholder: "Enter tags", class: "form-control" %>
+      <div class = "input-group-btn">
+        <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
+
+      </div>
+    </div>
+    <% end %>
+<!--   <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a> -->
+</div>
+
+<div class="main">
+
+  
+</div>
+   
+</body>
+</html> 
+
+
+
+
+
       <p id="notice"><%= notice %></p>
 
 <h1 style = "margin-top: 4rem;"> Products </h1>
