@@ -44,7 +44,7 @@
                 border-radius: 12px;'>
 
 
-<%= link_to(image_tag(restaurant.image.thumb.url, alt: 'Image'), restaurant ,target: '_blank') if restaurant.image? %><br><br>
+<%= link_to(image_tag(restaurant.image.thumb.url, alt: 'Image'), restaurant) if restaurant.image? %><br><br>
                 <%= link_to restaurant.name, restaurant, :method => "get" %>
               </div>
               <br>

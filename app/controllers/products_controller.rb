@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @products = @restaurant.products
+
+
+    @res_products = params[:tag] ? @products.tagged_with(params[:tag]) : @products
+    @tags = Tag.all
+    
+
     @line_item = current_order.line_items.new
   end
 
@@ -80,6 +86,19 @@ class ProductsController < ApplicationController
   end
 
 
+def product_search
+     @restaurant = Restaurant.find(params[:restaurant_id])
+    @products = @restaurant.products
+    @line_item = current_order.line_items.new
+
+    if params[:productsearch].blank?
+      redirect_to restaurant_products_path and return
+    else
+      @parameter = params[:productsearch].downcase
+      @results = @products.where("lower(tags) LIKE :productsearch", productsearch: "%#{@parameter}%")
+    end
+
+end
 
 
   private
@@ -89,6 +108,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :veg_nveg, :category, :portion, :restaurant_id, :search, :image, :tags)
+      params.require(:product).permit(:name, :price, :veg_nveg, :category, :portion, :restaurant_id, :search, :image, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

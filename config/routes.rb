@@ -17,10 +17,15 @@ Rails.application.routes.draw do
   # get 'restaurants/update'
   # get 'restaurants/show'
   # get 'restaurants/destroy'
+  resources :tags
+  resources :taggings
 
-
+  # get 'tags/:tag', to: 'restaurant_products#index', as: :tag
   resources :restaurants do
-    resources :products
+    resources :products do
+
+      # get '/tags/:tag', to: 'products#index', as: :tag
+    end
   end
   resources :line_items
   resource :carts, only:[:show, :checkout] # notice resource instead of resources

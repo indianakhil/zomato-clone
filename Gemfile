@@ -40,6 +40,8 @@ gem 'bootstrap', '~> 5.1.3'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
+  # add the line below
+  gem 'rails-assets-chosen'
 end
 
 gem 'dotenv-rails'
@@ -49,7 +51,9 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem "recaptcha", require: "recaptcha/rails"
 
 
+gem 'simple_form'
 
+gem 'country_select'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

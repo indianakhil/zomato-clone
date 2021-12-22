@@ -2,7 +2,7 @@
 
 <% if user_signed_in? %>
   <% if current_user.user_role.downcase == "manager" %>
-    <%if @products.size == 0%>
+    <%if @res_products.size == 0%>
       <h2> No Products Added Yet. Add Some ! 
       <%= link_to "Add", new_restaurant_product_path %></h2>
     <%else%>
@@ -19,8 +19,8 @@ body {
 }
 
 .sidenav {
-  width: 250px;
-  position: fixed;
+  width: 100%;
+  position: static;
   z-index: 1;
   top: 100px;
   left: 1050px;
@@ -56,14 +56,13 @@ body {
 <body>
 
 <div class="sidenav">
-  <h3>  Filters </h3>
-  Enter Tags <br>
+  <h3 style="text-align:center">  Filters </h3>
+  <p style= "margin-left: 20px;font-size: 20px;">Filter by Tags <br>
       <%= form_tag(search_path(@restaurant), :method => "get") do %>
-    <div class= "input-group" style = "float:right; margin-left: 5rem; padding-right: 2rem">
+    <div class= "input-group" style = "float:right; width: 300px;margin-left: 5rem; padding-right: 2rem">
       <%= search_field_tag :search, params[:search], placeholder: "Enter tags", class: "form-control" %>
       <div class = "input-group-btn">
         <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
-
       </div>
     </div>
     <% end %>
@@ -71,6 +70,18 @@ body {
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a> -->
+
+<!-- to enter the list of tags with clickable filters -->
+<%#= render "tag" %>
+<% @tags.each do |tag| %>
+  &nbsp;
+  <%#= tag.name %>
+  <%= check_box_tag(:tag) %>
+  <%= label_tag(:tag, tag.name) %>
+
+
+<% end %>
+
 </div>
 
 <div class="main">
@@ -91,26 +102,34 @@ body {
       <table>
         <thead>
           <tr>
-            <th>Image</th>
+
             <th>Name</th>
             <th>Price</th>
             <th>Veg nveg</th>
             <th>Category</th>
             <th>Portion</th>
+            <th>Tags</th>
             <th colspan="3"></th>
           </tr>
         </thead>
 
         <tbody>
-          <% @products.each do |product| %>
+          <% @res_products.each do |product| %>
             <tr>
               
-              <td><%= link_to(image_tag(product.image.thumb.url, alt: 'Image'), restaurant_product ,target: '_blank') if product.image? %></td>
+
               <td><%= product.name %></td>
               <td><%= product.price %></td>
               <td><%= product.veg_nveg %></td>
               <td><%= product.category %></td>
               <td><%= product.portion %></td>
+
+
+
+              <p><small><%= raw product.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+
+
+
               <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
               <td><%= link_to 'Edit', edit_restaurant_product_path(product.restaurant_id, product) %>
               <td><%= link_to 'Delete', restaurant_products_path(@restaurant), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_product' %></td>

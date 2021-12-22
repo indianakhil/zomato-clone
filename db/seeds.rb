@@ -45,3 +45,4 @@ Tag.create(name: "Pizza")
 Tag.create(name: "Fried Chicken")
 Tag.create(name: "Fast Food")
 Tag.create(name: "Healthy food")
+

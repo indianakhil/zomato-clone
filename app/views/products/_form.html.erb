@@ -1,80 +1,18 @@
 
-<%= form_with(model: [@restaurant, @product], id: "new_product", local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-  <%= form.label :product_image %><br>
-  <%= form.file_field :image %>
-  </div>
+<%= simple_form_for @product, url: restaurant_products_path do |f| %>
+  <%= f.input :name %><br>
+  <%= f.input :price %><br>
+  <%= f.input :veg_nveg, label: 'Veg or Non Veg ' %><br>
+  <%= f.input :category %><br>
+  <%= f.input :portion %><br>
+  <%= f.input :tag_ids, label: 'Add Tags', as: :select, collection: Tag.order(:name), label_method: :name, input_html: {multiple: true} %>
+  <%= f.submit "Submit", class: 'btn btn-lg btn-primary float-right' %>
 
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :veg_nveg %>
-    <%= form.text_field :veg_nveg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :portion %>
-    <%= form.text_field :portion %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :restaurant_id , value: @restaurant.id %>
-  </div>
-
-
-<p>
-<!--   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a> -->
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Add Tags
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <p>Add Tags with comma seperated values</p>
-  <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_field :tags %>
-  </div>
-  </div>
-</div>
-
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%#= f.button :submit %>
 <% end %>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script> -->
-<script type="text/javascript">
-  <%= render "product-validate.js" %>
-</script>
+<!-- <script type="text/javascript"> -->
+   <%#= render "product-validate.js" %>
+<!-- </script> -->
