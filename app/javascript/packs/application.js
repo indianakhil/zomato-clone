@@ -33,3 +33,5 @@ require('jquery')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$('.select2').select2()

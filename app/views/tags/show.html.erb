@@ -1,0 +1,110 @@
+
+<%= render 'nav' %>
+
+
+<!-- Sidebar for filters -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 100%;
+  position: static;
+  z-index: 1;
+  top: 100px;
+  left: 1050px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <h3 style="text-align:center">  Filters </h3>
+  <p style= "margin-left: 20px;font-size: 20px;">Filter by Tags </p><br>
+
+
+<% @tags.each do |tag| %>
+  &nbsp;
+  <%#= tag.name %>
+  <%= check_box_tag(:tag) %>
+  <%= label_tag(:tag, tag.name) %>
+
+
+<% end %>
+
+<%= render 'tags/tag'%>
+
+</div>
+
+      <h1 style = "margin-top: 4rem;">Products</h1>
+
+      <table>
+        <thead>
+          <tr>
+
+            <th>Name</th>
+            <th>Price</th>
+            <th>Veg nveg</th>
+            <th>Category</th>
+            <th>Portion</th>
+            <th>Tags</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <% @t_products.each do |product| %>
+            <tr>
+              
+
+              <td><%= product.name %></td>
+              <td><%= product.price %></td>
+              <td><%= product.veg_nveg %></td>
+              <td><%= product.category %></td>
+              <td><%= product.portion %></td>
+
+
+<!--
+              <p><small><%#= raw product.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+
+-->
+
+              <td><%= link_to 'Show', restaurant_product_path(product.restaurant_id, product) %></td>
+              <td><%= link_to 'Edit', edit_restaurant_product_path(product.restaurant_id, product) %>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>

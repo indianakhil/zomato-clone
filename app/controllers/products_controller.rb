@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @products = @restaurant.products
 
 
-    @res_products = params[:tag] ? @products.tagged_with(params[:tag]) : @products
+    @tag_products = params[:tag] ? @products.tagged_with(params[:tag]) : @products
     @tags = Tag.all
     
 

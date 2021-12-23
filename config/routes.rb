@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   # get 'tags/:tag', to: 'restaurant_products#index', as: :tag
   resources :restaurants do
-    resources :products do
+
+    resources :products
 
       # get '/tags/:tag', to: 'products#index', as: :tag
-    end
   end
   resources :line_items
   resource :carts, only:[:show, :checkout] # notice resource instead of resources
@@ -33,5 +33,7 @@ Rails.application.routes.draw do
   post 'carts/checkout', to: 'carts#checkout', as:'checkout'
   root 'restaurants#home'
 
+
+  # get '/restaurants/restaurant_id/products/tags/:id', to: 'tags#show', as:'tag_show'
 
 end
